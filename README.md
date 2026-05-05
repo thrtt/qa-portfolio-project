@@ -5,7 +5,7 @@ This project is part of my preparation for a junior QA position.
 
 ## Project Overview
 
-The goal of this project is to simulatе a real QA workflow by:
+The goal of this project is to simulate a real QA workflow by:
 - Creating test cases
 - Identifying potential defects
 - Testing API endpoints
