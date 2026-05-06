@@ -4,7 +4,7 @@
 
 ### BUG-001 - Unprofessional wording in login error messages
 
-**Related Test Cases:** TC-002, TC-003, TC-004, TC-005, TC-006, TC-007
+**Related Test Cases:** TC-002, TC-003, TC-004, TC-005, TC-006, TC-007, TC-008
 
 **Steps to Reproduce:**
 1. Open the app

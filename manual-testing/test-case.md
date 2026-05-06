@@ -155,3 +155,26 @@ System displays an error message and user remains on the login page
 System displays an error message indicating the user is locked out and user remains on the login page
 
 **Priority:** High
+
+---
+
+### TC-008 - Login with invalid username and password
+
+**Scenario:** TS-008
+**Preconditions:** User is on the login page
+
+**Steps:**
+
+1. Enter invalid username in username field
+2. Enter invalid password in password field
+3. Click Login button
+
+**Test Data:**
+
+- username: wrong_user
+- password: wrong_password
+
+**Expected Result:**
+System displays an error message and user remains on the login page
+
+**Priority:** High
