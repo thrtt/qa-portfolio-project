@@ -22,3 +22,24 @@ System displays a clear and professional error message indicating that the usern
 
 **Priority:** Medium
 
+---
+
+### BUG-002 - Inconsistent tone in login error messages
+
+**Related Test Case:** TC-007 - Login with locked out user
+
+**Steps to Reproduce:**
+1. Open the app
+2. Enter locked out username in username field
+3. Enter valid password in password field
+4. Click Login button
+
+**Actual Result:** 
+Error message containing the phrase "Epic sadface" is displayed on the login page
+
+**Expected Result:**
+System displays a clear and professional error message without informal expressions
+
+**Severity:** Low
+
+**Priority:** Medium
