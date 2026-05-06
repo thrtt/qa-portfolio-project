@@ -4,6 +4,8 @@
 
 ### BUG-001 - Unprofessional error message on login page
 
+**Related Test Case:** TC-004 - Login with empty username
+
 **Steps to Reproduce:**
 1. Open the app
 2. Leave username field empty
@@ -19,3 +21,4 @@ System displays a clear and professional error message indicating that the usern
 **Severity:** Low
 
 **Priority:** Medium
+
