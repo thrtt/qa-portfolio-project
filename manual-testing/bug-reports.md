@@ -2,43 +2,24 @@
 
 ---
 
-### BUG-001 - Unprofessional error message on login page
+### BUG-001 - Unprofessional wording in login error messages
 
-**Related Test Case:** TC-004 - Login with empty username
-
-**Steps to Reproduce:**
-1. Open the app
-2. Leave username field empty
-3. Enter any password
-4. Click Login button
-
-**Actual Result:** 
-Error message "Epic sadface: Username is required" is displayed
-
-**Expected Result:**
-System displays a clear and professional error message indicating that the username is required
-
-**Severity:** Low
-
-**Priority:** Medium
-
----
-
-### BUG-002 - Inconsistent tone in login error messages
-
-**Related Test Case:** TC-007 - Login with locked out user
+**Related Test Cases:** TC-002, TC-003, TC-004, TC-005, TC-006, TC-007
 
 **Steps to Reproduce:**
 1. Open the app
-2. Enter locked out username in username field
-3. Enter valid password in password field
-4. Click Login button
+2. Trigger any login validation error by using invalid, empty, or locked out user credentials
+3. Observe the displayed error message
 
-**Actual Result:** 
-Error message containing the phrase "Epic sadface" is displayed on the login page
+**Actual Result:**
+Login error messages contain the informal phrase "Epic sadface", for example:
+- "Epic sadface: Username is required"
+- "Epic sadface: Password is required"
+- "Epic sadface: Username and password do not match any user in this service"
+- "Epic sadface: Sorry, this user has been locked out."
 
 **Expected Result:**
-System displays a clear and professional error message without informal expressions
+System displays clear and professional login error messages without informal expressions.
 
 **Severity:** Low
 
