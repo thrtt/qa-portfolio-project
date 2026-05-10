@@ -92,3 +92,56 @@
 6. Click the "Remove" button for each selected product
 7. Verify the selected products are no longer displayed in the cart
 8. Verify the cart badge is no longer visible
+
+### ITC-007 - Verify products can be sorted by ascending name
+
+**Scenario:** IS-005
+
+**Preconditions:**
+- User is logged in with valid credentials
+- User is on the inventory page
+
+**Steps:**
+1. Click on the sort dropdown menu
+2. Select "Name (A to Z)"
+3. Verify the products are sorted alphabetically
+
+### ITC-007 - Verify products can be sorted by descending name
+
+**Scenario:** IS-005
+
+**Preconditions:**
+- User is logged in with valid credentials
+- User is on the inventory page
+
+**Steps:**
+1. Click on the sort dropdown menu
+2. Select "Name (Z to A)"
+3. Verify the products are sorted in reverse alphabetical order
+
+### ITC-008 - Verify products can be sorted by ascending price
+
+**Scenario:** IS-006
+
+**Preconditions:**
+- User is logged in with valid credentials
+- User is on the inventory page
+
+**Steps:**
+1. Click on the sort dropdown menu
+2. Select "price (low to high)"
+3. Verify the prices are sorted from low to high
+
+### ITC-009 - Verify products can be sorted by descending price
+
+**Scenario:** IS-006
+
+**Preconditions:**
+- User is logged in with valid credentials
+- User is on the inventory page
+
+**Steps:**
+1. Click on the sort dropdown menu
+2. Select "price (high to low)"
+3. Verify the prices are sorted from high to low
+
