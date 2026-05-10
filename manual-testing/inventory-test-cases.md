@@ -27,7 +27,7 @@
 4. Verify the product image is visible
 5. Verify the "add to cart" button is visible
 
-### ITC-003 - Verify user can add a one product to the cart
+### ITC-003 - Verify user can add one product to the cart
 
 **Scenario:** IS-003
 
@@ -37,7 +37,7 @@
 
 **Steps:**
 1. Observe the displayed products
-2. Click "add to Cart" on the product
+2. Click "add to cart" on the product
 3. Verify the cart badge displays "1"
 4. Open the shopping cart
 5. Verify the selected product is displayed in the cart
@@ -85,7 +85,7 @@
 
 **Steps:**
 1. Observe the displayed products
-2. Click "Add to cart" on multiple product
+2. Click "add to cart" on multiple product
 3. Verify the cart badge displays "3"
 4. Open the shopping cart
 5. Verify the selected products are displayed in the cart
