@@ -36,3 +36,11 @@ Manual functional testing was performed to verify that the core features of the 
 ## Status
 
 In progress
+
+## Current Progress
+
+Completed:
+- Login test scenarios and test cases
+- Inventory test scenarios and test cases
+- Cart test scenarios and test cases
+- Checkout test scenarios and test cases
