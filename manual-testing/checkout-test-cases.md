@@ -12,7 +12,7 @@
 1. Click "Add to cart" button
 2. Click the shopping cart link
 3. Click the checkout button
-4. Fill the with valid data "First Name", "Last Name", "Zip/Postal Code"
+4. Fill the fields with valid data "First Name", "Last Name", "Zip/Postal Code"
 5. Click "Continue" button
 6. Click the "Finish" button
 7. Verify the message "Thank you for your order!" is displayed
@@ -29,8 +29,8 @@
 1. Click "Add to cart" button
 2. Click the shopping cart link
 3. Click the checkout button
-4. Fill the with empty data "First Name"
-5. Fill the with valid data "Last Name", "Zip/Postal Code"
+4. Leave the "First Name" field empty
+5. Fill the "Last Name" and "Zip/Postal Code" fields with valid data
 6. Click "Continue" button
 7. Verify the message "Error: First Name is required"
 

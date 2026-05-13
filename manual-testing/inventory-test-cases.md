@@ -106,7 +106,7 @@
 2. Select "Name (A to Z)"
 3. Verify the products are sorted alphabetically
 
-### ITC-007 - Verify products can be sorted by descending name
+### ITC-008 - Verify products can be sorted by descending name
 
 **Scenario:** IS-005
 
@@ -119,7 +119,7 @@
 2. Select "Name (Z to A)"
 3. Verify the products are sorted in reverse alphabetical order
 
-### ITC-008 - Verify products can be sorted by ascending price
+### ITC-009 - Verify products can be sorted by ascending price
 
 **Scenario:** IS-006
 
@@ -132,7 +132,7 @@
 2. Select "price (low to high)"
 3. Verify the prices are sorted from low to high
 
-### ITC-009 - Verify products can be sorted by descending price
+### ITC-010 - Verify products can be sorted by descending price
 
 **Scenario:** IS-006
 

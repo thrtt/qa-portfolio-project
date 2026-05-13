@@ -52,7 +52,7 @@
 3. Click on the "Remove" buttons
 4. Verify the removed products are no longer displayed in the cart
 
-### Verify user can continue shopping from cart
+### Verify user can Continue Shopping from cart
 
 **Scenario:** CS-003
 
