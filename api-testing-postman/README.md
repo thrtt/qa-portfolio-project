@@ -1,10 +1,28 @@
 # API Testing - Postman
 
-This section will include API testing using Postman.
+This section contains API testing using Postman.
 
-Planned work:
-- Collections
-- Environments
-- Automated tests
+## API Under Test
 
-Status: Planned
+Fake Store API
+
+Base URL: https://fakestoreapi.com
+
+## Scope of Testing
+
+The following API areas will be covered:
+
+- Products
+- Carts
+- Authentication
+- Negative API scenarios
+
+## Planned Work
+
+- Postman collection
+- Postman environment
+- Automated API tests
+
+## Status
+
+In progress
