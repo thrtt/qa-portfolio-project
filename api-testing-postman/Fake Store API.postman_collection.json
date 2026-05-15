@@ -1,0 +1,301 @@
+{
+  "info": {
+    "_postman_id": "b97f4d80-d995-49a9-bb9f-deffd075c75d",
+    "name": "Fake Store API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38177162"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Get All Products",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {",
+                  "    pm.response.to.have.status(200)",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 1000ms\", () => {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body is not empty\", () => {",
+                  "    pm.response.to.have.jsonBody();",
+                  "});",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Single Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 1000ms\", () => {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", () => {\r",
+                  "    pm.response.to.have.jsonBody();\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Product ID is 1\", () => {\r",
+                  "    pm.expect(pm.response.json().id).to.equal(1);\r",
+                  "})\r",
+                  "\r",
+                  "pm.test(\"Product title is correct\", () => {\r",
+                  "    pm.expect(pm.response.json().title).to.equal(\"Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops\")\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Product price is a number\", () => {\r",
+                  "    const response = pm.response.json();\r",
+                  "    pm.expect(response.price).to.be.a(\"number\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Product category exist\", () => {\r",
+                  "    pm.expect(pm.response.json().category).to.not.be.empty;\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/products/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Add Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 201\", () => {",
+                  "    pm.response.to.have.status(201);",
+                  "});",
+                  "",
+                  "pm.test(\"Response time is less than 1000ms\", () => {",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);",
+                  "});",
+                  "",
+                  "pm.test(\"Response body is not empty\", () => {",
+                  "    pm.response.to.have.jsonBody();",
+                  "});",
+                  "",
+                  "pm.test(\"Product title is correct\", () => {",
+                  "    pm.expect(pm.response.json().title).to.equal(\"QA Test Product\");",
+                  "});",
+                  "",
+                  "pm.test(\"Product price is correct\", () => {",
+                  "    pm.expect(pm.response.json().price).to.equal(1101.01);",
+                  "});",
+                  "",
+                  "pm.test(\"Product category is correct\", () => {",
+                  "    pm.expect(pm.response.json().category).to.equal(\"Electronics\");",
+                  "});",
+                  "",
+                  "pm.test(\"Product image exists\", () => {",
+                  "    pm.expect(pm.response.json().image).to.not.be.empty;",
+                  "});",
+                  "",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"id\": 111,\n    \"title\": \"QA Test Product\",\n    \"price\": 1101.01,\n    \"description\": \"Test product created with Postman\",\n    \"category\": \"Electronics\",\n    \"image\": \"https://i.pravatar.cc\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response body is not empty\", () => {\r",
+                  "    pm.response.to.have.jsonBody();\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Product title is updated\", () => {\r",
+                  "    pm.expect(pm.response.json().title).to.equal(\"Updated QA Test Product\");\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Product price is updated\", () => {\r",
+                  "    pm.expect(pm.response.json().price).to.equal(1101.01);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"id\": 1,\r\n\"title\": \"Updated QA Test Product\",\r\n\"price\": 1101.01,\r\n\"description\": \"Test product created with Postman\",\r\n\"category\": \"Electronics\",\r\n\"image\": \"https://i.pravatar.cc\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Delete Product",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", () => {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "\r",
+                  "pm.test(\"Response time is less than 1000ms\", () => {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n\"id\": 1,\r\n\"title\": \"Updated QA Test Product\",\r\n\"price\": 1101.01,\r\n\"description\": \"Test product created with Postman\",\r\n\"category\": \"Electronics\",\r\n\"image\": \"https://i.pravatar.cc\"\r\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/products/1",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "products",
+                "1"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Carts",
+      "item": []
+    },
+    {
+      "name": "Auth",
+      "item": []
+    },
+    {
+      "name": "Negative Tests",
+      "item": []
+    }
+  ]
+}
