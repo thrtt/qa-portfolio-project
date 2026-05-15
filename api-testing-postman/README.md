@@ -26,3 +26,7 @@ The following API areas will be covered:
 ## Status
 
 In progress
+
+## Notes
+
+Fake Store API is a demo API and some operations simulate CRUD behavior without persistent data storage.
