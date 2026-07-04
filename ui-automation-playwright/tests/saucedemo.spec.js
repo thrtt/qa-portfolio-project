@@ -11,6 +11,7 @@ const selectors = {
   loginButton: '[data-test="login-button"]',
   title: '[data-test="title"]',
   error: '[data-test="error"]',
+  inventoryItem: '[data-test="inventory-item"]',
 };
 
 const users = {
@@ -124,5 +125,21 @@ test.describe("Login tests", () => {
       "Epic sadface: Username and password do not match any user in this service",
     );
     await expect(errorMessage).toBeVisible();
+  });
+});
+
+test.describe("Inventory tests", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(routes.home);
+
+    await page.locator(selectors.username).fill(users.standard);
+    await page.locator(selectors.password).fill(passwords.valid);
+    await page.locator(selectors.loginButton).click();
+
+    await expect(page).toHaveURL(/inventory/);
+  });
+
+  test("Verify all products are displayed", async ({ page }) => {
+    await expect(page.locator(selectors.inventoryItem)).toHaveCount(6);
   });
 });
