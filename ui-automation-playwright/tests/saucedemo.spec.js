@@ -12,6 +12,12 @@ const selectors = {
   title: '[data-test="title"]',
   error: '[data-test="error"]',
   inventoryItem: '[data-test="inventory-item"]',
+  inventoryItemName: '[data-test="inventory-item-name"]',
+  inventoryItemDescription: '[data-test="inventory-item-desc"]',
+  inventoryItemPrice: '[data-test="inventory-item-price"]',
+  addToCartButton: 'button:has-text("Add to cart")',
+  shoppingCartBadge: '[data-test="shopping-cart-badge"]',
+  productSort: ".product_sort_container",
 };
 
 const users = {
@@ -141,5 +147,132 @@ test.describe("Inventory tests", () => {
 
   test("Verify all products are displayed", async ({ page }) => {
     await expect(page.locator(selectors.inventoryItem)).toHaveCount(6);
+  });
+
+  test("Verify product details are displayed correctly", async ({ page }) => {
+    const firstProduct = page.locator(selectors.inventoryItem).first();
+
+    await expect(
+      firstProduct.locator(selectors.inventoryItemName),
+    ).toBeVisible();
+    await expect(
+      firstProduct.locator(selectors.inventoryItemDescription),
+    ).toBeVisible();
+    await expect(
+      firstProduct.locator(selectors.inventoryItemPrice),
+    ).toBeVisible();
+    await expect(firstProduct.locator(selectors.addToCartButton)).toBeVisible();
+  });
+
+  test("Verify user can add one product to the cart", async ({ page }) => {
+    const firstProduct = page.locator(selectors.inventoryItem).first();
+    const addCartButton = firstProduct.locator(selectors.addToCartButton);
+    const removeButton = firstProduct.locator("//button[text()='Remove']");
+
+    await addCartButton.click();
+
+    await expect(removeButton).toBeVisible();
+    await expect(page.locator(selectors.shoppingCartBadge)).toHaveText("1");
+  });
+
+  test("Verify user can add multiple products to the cart", async ({
+    page,
+  }) => {
+    const firstProduct = page.locator(selectors.inventoryItem).first();
+    const addCartButton = firstProduct.locator(selectors.addToCartButton);
+    const removeButton = firstProduct.locator("//button[text()='Remove']");
+
+    await addCartButton.click();
+
+    await expect(removeButton).toBeVisible();
+    await expect(page.locator(selectors.shoppingCartBadge)).toHaveText("1");
+  });
+
+  test("Verify user can remove a single product from the cart", async ({
+    page,
+  }) => {
+    const firstProduct = page.locator(selectors.inventoryItem).first();
+    const addCartButton = firstProduct.locator(selectors.addToCartButton);
+    const removeButton = firstProduct.locator("//button[text()='Remove']");
+
+    await addCartButton.click();
+    await removeButton.click();
+
+    await addCartButton.click();
+    await removeButton.click();
+  });
+
+  test("Verify user can remove a multiple products from the cart", async ({
+    page,
+  }) => {
+    const products = page.locator(selectors.inventoryItem);
+
+    for (let i = 0; i < 2; i++) {
+      await products.nth(i).locator(selectors.addToCartButton).click();
+    }
+
+    for (let i = 0; i < 2; i++) {
+      await products.nth(i).locator("//button[text()='Remove']").click();
+    }
+
+    await expect(page.locator(selectors.shoppingCartBadge)).toHaveCount(0);
+  });
+
+  test("Verify products can be sorted by name (A to Z)", async ({ page }) => {
+    await page.locator(selectors.productSort).selectOption({ value: "az" });
+
+    const productName = page.locator(selectors.inventoryItemName);
+
+    const actualNames = await productName.allTextContents();
+    const expextedNames = [...actualNames].sort();
+
+    await expect(actualNames).toEqual(expextedNames);
+  });
+
+  test("Verify products can be sorted by name (Z to A)", async ({ page }) => {
+    await page.locator(selectors.productSort).selectOption({ value: "za" });
+
+    const productName = page.locator(selectors.inventoryItemName);
+
+    const actualNames = await productName.allTextContents();
+    const expectedNames = [...actualNames].sort().reverse();
+
+    await expect(actualNames).toEqual(expectedNames);
+  });
+
+  test("Verify products can be sorted by price (low to high)", async ({
+    page,
+  }) => {
+    await page.locator(selectors.productSort).selectOption({ value: "lohi" });
+
+    const productPrices = page.locator(selectors.inventoryItemPrice);
+
+    const priceTexts = await productPrices.allTextContents();
+
+    const actualPrices = priceTexts.map((price) =>
+      Number(price.replace("$", "")),
+    );
+
+    const expectedPrices = [...actualPrices].sort((a, b) => a - b);
+
+    expect(actualPrices).toEqual(expectedPrices);
+  });
+
+  test("Verify products can be sorted by price (high to low)", async ({
+    page,
+  }) => {
+    await page.locator(selectors.productSort).selectOption({ value: "hilo" });
+
+    const productPrices = page.locator(selectors.inventoryItemPrice);
+
+    const priceTexts = await productPrices.allTextContents();
+
+    const actualPrices = priceTexts.map((price) =>
+      Number(price.replace("$", "")),
+    );
+
+    const expectedPrices = [...actualPrices].sort((a, b) => b - a);
+
+    expect(actualPrices).toEqual(expectedPrices);
   });
 });
