@@ -18,6 +18,11 @@ const selectors = {
   addToCartButton: 'button:has-text("Add to cart")',
   shoppingCartBadge: '[data-test="shopping-cart-badge"]',
   productSort: ".product_sort_container",
+  cartIcon: '[data-test="shopping-cart-link"]',
+  removeButton: '[data-test="remove-sauce-labs-backpack"]',
+  continueShopping: '[data-test="continue-shopping"]',
+  checkout: '[data-test="checkout"]',
+  completeHeader: '[data-test="complete-header"]',
 };
 
 const users = {
@@ -224,9 +229,9 @@ test.describe("Inventory tests", () => {
     const productName = page.locator(selectors.inventoryItemName);
 
     const actualNames = await productName.allTextContents();
-    const expextedNames = [...actualNames].sort();
+    const expectedNames = [...actualNames].sort();
 
-    await expect(actualNames).toEqual(expextedNames);
+    await expect(actualNames).toEqual(expectedNames);
   });
 
   test("Verify products can be sorted by name (Z to A)", async ({ page }) => {
@@ -274,5 +279,71 @@ test.describe("Inventory tests", () => {
     const expectedPrices = [...actualPrices].sort((a, b) => b - a);
 
     expect(actualPrices).toEqual(expectedPrices);
+  });
+});
+
+test.describe("Cart tests", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(routes.home);
+
+    await page.locator(selectors.username).fill(users.standard);
+    await page.locator(selectors.password).fill(passwords.valid);
+    await page.locator(selectors.loginButton).click();
+
+    await expect(page).toHaveURL(/inventory/);
+  });
+
+  test("Verify one added product is displayed in cart", async ({ page }) => {
+    const addProduct = page.locator(selectors.addToCartButton).first();
+    await addProduct.click();
+
+    const productInCart = page.locator(selectors.inventoryItemName);
+
+    await page.locator(selectors.cartIcon).click();
+
+    await expect(productInCart).toBeVisible();
+  });
+
+  test("Verify multiple added products are displayed in cart", async ({
+    page,
+  }) => {
+    const productInCart = page.locator(selectors.inventoryItemName);
+
+    const products = page.locator(selectors.inventoryItem);
+    await products.nth(0).locator(selectors.addToCartButton).click();
+    await products.nth(1).locator(selectors.addToCartButton).click();
+
+    await page.locator(selectors.cartIcon).click();
+
+    await expect(productInCart).toHaveCount(2);
+  });
+
+  test("Verify user can continue shopping from the cart", async ({ page }) => {
+    await page.locator(selectors.addToCartButton).first().click();
+
+    await page.locator(selectors.cartIcon).click();
+
+    await page.locator(selectors.continueShopping).click();
+
+    await expect(page).toHaveURL(routes.inventory);
+  });
+
+  test("Verify user can complete checkout", async ({ page }) => {
+    const completeHeader = page.locator(selectors.completeHeader);
+
+    await page.locator(selectors.addToCartButton).first().click();
+    await page.locator(selectors.cartIcon).click();
+
+    await page.locator(selectors.checkout).click();
+
+    await page.locator('[data-test="firstName"]').fill('John');
+    await page.locator('[data-test="lastName"]').fill('Smith');
+    await page.locator('[data-test="postalCode"]').fill('85412');
+
+    await page.locator('[data-test="continue"]').click();
+
+    await page.locator('[data-test="finish"]').click()
+
+    await expect(completeHeader).toHaveText("Thank you for your order!");
   });
 });
