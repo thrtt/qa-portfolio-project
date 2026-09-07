@@ -27,7 +27,7 @@ This folder includes:
 - Test Scenarios
 - Test Cases
 - Bug Reports
-- Test Summary Report
+- Test Summary Report (planned after test execution is complete)
 
 ## Testing Approach
 
@@ -44,3 +44,4 @@ Completed:
 - Inventory test scenarios and test cases
 - Cart test scenarios and test cases
 - Checkout test scenarios and test cases
+- Logout test scenarios and test cases

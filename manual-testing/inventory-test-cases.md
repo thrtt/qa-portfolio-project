@@ -10,7 +10,7 @@
 
 **Steps:**
 1. Observe the displayed products
-2. Verify all products are visible
+2. Verify exactly six products are visible
 
 ### ITC-002 - Verify product details are displayed correctly
 
@@ -25,7 +25,8 @@
 2. Verify the product name is visible
 3. Verify the product price is visible
 4. Verify the product image is visible
-5. Verify the "add to cart" button is visible
+5. Verify the product description is visible
+6. Verify the "Add to cart" button is visible
 
 ### ITC-003 - Verify user can add one product to the cart
 
@@ -57,7 +58,7 @@
 4. Open the shopping cart
 5. Verify the selected products are displayed in the cart
 
-### ITC-005 - Verify user can remove a single product from the cart
+### ITC-005 - Verify user can remove a single product from the inventory page
 
 **Preconditions:**
 - User is logged in with valid credentials
@@ -69,13 +70,12 @@
 1. Observe the displayed products
 2. Click "Add to cart" on a product
 3. Verify the cart badge displays "1"
-4. Open the shopping cart
-5. Verify the selected product is displayed in the cart
-6. Click the "Remove" button
-7. Verify the selected product is no longer displayed in the cart
-8. Verify the cart badge is no longer visible
+4. Verify the product button changes to "Remove"
+5. Click the "Remove" button on the inventory page
+6. Verify the product button changes back to "Add to cart"
+7. Verify the cart badge is no longer visible
 
-### ITC-006 - Verify user can remove a multiple products from the cart
+### ITC-006 - Verify user can remove multiple products from the inventory page
 
 **Preconditions:**
 - User is logged in with valid credentials
@@ -85,13 +85,12 @@
 
 **Steps:**
 1. Observe the displayed products
-2. Click "add to cart" on multiple product
+2. Click "Add to cart" on three products
 3. Verify the cart badge displays "3"
-4. Open the shopping cart
-5. Verify the selected products are displayed in the cart
-6. Click the "Remove" button for each selected product
-7. Verify the selected products are no longer displayed in the cart
-8. Verify the cart badge is no longer visible
+4. Verify each selected product button changes to "Remove"
+5. Click the "Remove" button for each selected product on the inventory page
+6. Verify each product button changes back to "Add to cart"
+7. Verify the cart badge is no longer visible
 
 ### ITC-007 - Verify products can be sorted by ascending name
 

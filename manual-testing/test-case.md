@@ -178,3 +178,24 @@ System displays an error message indicating the user is locked out and user rema
 System displays an error message and user remains on the login page
 
 **Priority:** High
+
+---
+
+### TC-009 - Verify password field masks entered characters
+
+**Scenario:** TS-009
+**Preconditions:** User is on the login page
+
+**Steps:**
+
+1. Enter a value in the password field
+2. Observe the entered characters
+
+**Test Data:**
+
+- password: secret_sauce
+
+**Expected Result:**
+The entered password characters are masked and are not displayed as plain text
+
+**Priority:** Medium

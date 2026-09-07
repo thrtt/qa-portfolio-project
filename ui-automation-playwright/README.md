@@ -1,22 +1,21 @@
 # UI Automation - Playwright
 
-This section will include automated UI tests using Playwright.
+This section contains automated UI tests using Playwright.
 
 ## Application Under Test
 
 SauceDemo: https://www.saucedemo.com/
 
-## Planned Scope
+## Scope
 
 - Login tests
 - Inventory page tests
 - Add to cart tests
 - Checkout flow tests
 
-## Planned Structure
+## Structure
 
 - `tests/` - automated test files
-- `pages/` - Page Object Model files
 - `test-results/` - test execution results
 
 ## Tools
@@ -25,6 +24,18 @@ SauceDemo: https://www.saucedemo.com/
 - JavaScript 
 - VS Code
 
+## Run the Tests
+
+```bash
+npm test
+```
+
+To watch the tests run in a browser:
+
+```bash
+npm run test:headed
+```
+
 ## Status
 
-Planned
+In progress

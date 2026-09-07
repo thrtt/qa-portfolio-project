@@ -1,6 +1,6 @@
 # Checkout Test Scenarios - SauceDemo
 
-## Cart 
+## Checkout
 
 | ID | Test Scenario | Priority |
 | --- | --- | --- |
