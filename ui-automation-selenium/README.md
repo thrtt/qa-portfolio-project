@@ -4,9 +4,9 @@ Automated SauceDemo UI tests using C#, .NET 8, NUnit and Selenium WebDriver.
 
 ## Coverage
 
-28 tests cover login, logout and validation errors, product information and sorting,
+33 tests cover login, logout and validation errors, product information and sorting,
 adding and removing products, cart navigation, and opening checkout.
-Checkout coverage verifies the customer information form; it does not submit an order.
+Checkout coverage includes successful orders, required field validation, and cancellation (CHTC-001 through CHTC-005).
 
 ## Requirements
 
