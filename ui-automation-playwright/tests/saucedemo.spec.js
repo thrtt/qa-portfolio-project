@@ -31,6 +31,8 @@ const selectors = {
   finish: '[data-test="finish"]',
   cancel: '[data-test="cancel"]',
   completeHeader: '[data-test="complete-header"]',
+  menuButton: "#react-burger-menu-btn",
+  logoutLink: '[data-test="logout-sidebar-link"]',
 };
 
 const users = {
@@ -412,5 +414,39 @@ test.describe("Checkout tests", () => {
     await page.locator(selectors.cancel).click();
 
     await expect(page).toHaveURL(routes.inventory);
+  });
+});
+
+test.describe("Logout tests", () => {
+  test.beforeEach(async ({ page }) => {
+    await page.goto(routes.home);
+    await page.locator(selectors.username).fill(users.standard);
+    await page.locator(selectors.password).fill(passwords.valid);
+    await page.locator(selectors.loginButton).click();
+
+    await expect(page).toHaveURL(routes.inventory);
+  });
+
+  test("Verify a logged-in user can log out", async ({ page }) => {
+    await page.locator(selectors.menuButton).click();
+    await page.locator(selectors.logoutLink).click();
+
+    await expect(page).toHaveURL(routes.home);
+    await expect(page.locator(selectors.username)).toBeVisible();
+    await expect(page.locator(selectors.password)).toBeVisible();
+    await expect(page.locator(selectors.loginButton)).toBeVisible();
+  });
+
+  test("Verify a logged-out user cannot access the inventory page", async ({
+    page,
+  }) => {
+    await page.locator(selectors.menuButton).click();
+    await page.locator(selectors.logoutLink).click();
+    await page.goto(routes.inventory);
+
+    await expect(page).toHaveURL(routes.home);
+    await expect(page.locator(selectors.error)).toHaveText(
+      "Epic sadface: You can only access '/inventory.html' when you are logged in.",
+    );
   });
 });
